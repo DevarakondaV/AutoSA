@@ -24,7 +24,7 @@ int main(int argc, char **argv){
   data_t w[I][O][K][K];
   data_t cout[O][R][C];
   data_t cout_golden[O][R][C];
-  // LoadData(cin, w, bias);
+  LoadData(cin, w, bias);
   
   // data initialization
   for (int i = 0 ; i < I; i++)
