@@ -3,11 +3,11 @@
 #include "math.h"
 
 typedef float data_t;
-#define O 16
-#define I 16
-#define R 16
-#define C 16
-#define K 3
+// #define O 16
+// #define I 16
+// #define R 16
+// #define C 16
+// #define K 3
 
 // const int kNum = 256;
 // const int kKernel = 5;
@@ -25,6 +25,12 @@ typedef float data_t;
 #define kImSize 224
 #define kInImSize 228
 #define kOutImSize 112
+
+#define O kNum
+#define I kNum
+#define R kInImSize
+#define C kInImSize
+#define K kKernel
 
 
 //#define O 6
