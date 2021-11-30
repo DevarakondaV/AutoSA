@@ -20,15 +20,15 @@ int main(int argc, char **argv){
   // data_t cout[R][C][O];
   // data_t cout_golden[R][C][O];
 
-  data_t cin[I][R + K - 1][C + K - 1];
+  data_t cin[I][R + K][C + K];
   data_t w[I][O][K][K];
   data_t cout[O][R][C];
   data_t cout_golden[O][R][C];
 
   // data initialization
   for (int i = 0 ; i < I; i++)
-    for (int r = 0; r < R + K - 1; r++)
-      for (int c = 0; c < C + K - 1; c++) {
+    for (int r = 0; r < R + K; r++)
+      for (int c = 0; c < C + K; c++) {
         // cin[r][c][i] = i;
         cin[i][r][c] = i;
       }
@@ -53,7 +53,7 @@ int main(int argc, char **argv){
     //     }
     //   }
     // }
-    
+
     // for (int i = 0; i < kNum; ++i) {
     //   for (int j = 0; j < kNum; ++j) {
     //     for (int h = 0; h < kImSize; ++h) {
