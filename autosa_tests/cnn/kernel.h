@@ -30,7 +30,7 @@ typedef float data_t;
 #define I kNum
 #define R kImSize
 #define C kImSize
-#define K kKernel
+#define K 3
 
 
 //#define O 6

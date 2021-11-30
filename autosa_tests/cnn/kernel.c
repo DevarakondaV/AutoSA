@@ -53,6 +53,19 @@ int main(int argc, char **argv){
     //     }
     //   }
     // }
+    
+    // for (int i = 0; i < kNum; ++i) {
+    //   for (int j = 0; j < kNum; ++j) {
+    //     for (int h = 0; h < kImSize; ++h) {
+    //       for (int w = 0; w < kImSize; ++w) {
+    //         for (int p = 0; p < kKernel; ++p) {
+    //           for (int q = 0; q < kKernel; ++q)
+    //             C[i][h][w] += weight(i, j, p, q) * input(j, h + p, w + q);
+    //           }
+    //         }
+    //     }
+    //   }
+    // }
 #pragma scop
   for (int o = 0; o < O; o++)
     for (int r = 0; r < R; r++)
