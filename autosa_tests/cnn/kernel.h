@@ -20,6 +20,11 @@ typedef float data_t;
 // // #define RO 112 // kOutImSize
 // #define K 5 //kKernel
 
+const int kNum = 256;
+const int kKernel = 5;
+const int kImSize = 224;
+const int kInImSize = 228;
+const int kOutImSize = 112;
 
 
 //#define O 6

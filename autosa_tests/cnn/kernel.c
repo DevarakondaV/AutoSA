@@ -8,7 +8,12 @@ int main(int argc, char **argv){
   // static data_t bias[I];
   // static data_t output[O][R][C];
 
-  // LoadData(input, weight, bias);
+  static data_t input[kNum][kInImSize][kInImSize];
+  static data_t weight[kNum][kNum][kKernel][kKernel];
+  static data_t bias[kNum];
+  static data_t output[kNum][kOutImSize][kOutImSize];
+
+  LoadData(input, weight, bias);
 
   data_t cin[R + K - 1][C + K - 1][I];
   data_t w[O][K][K][I];
