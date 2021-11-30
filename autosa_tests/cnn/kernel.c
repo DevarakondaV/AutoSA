@@ -8,12 +8,6 @@ int main(int argc, char **argv){
   static data_t bias[I];
   static data_t cout[O][R][C];
 
-  // if (argc > 2) {
-  //   clog << "Usage: " << argv[0] << " [data dir]\n";
-  //   return EXIT_FAILURE;
-  // }
-
-  // const string data_dir = argc == 2 ? string(argv[1]) + "/" : "";
   LoadData(cin, w, bias);
 
   // data_t cin[R + K - 1][C + K - 1][I];
@@ -53,7 +47,7 @@ int main(int argc, char **argv){
   for (int o = 0; o < O; o++)
     for (int r = 0; r < R; r++)
       for (int c = 0; c < C; c++) {
-        cout_golden[r][c][o] = 0;
+        cout_golden[o][r][c] = 0;
         for (int i = 0; i < I; i++)
           for (int p = 0; p < K; p++)
             for (int q = 0; q < K; q++) {
