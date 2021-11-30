@@ -51,7 +51,7 @@ int main(int argc, char **argv){
           for (int p = 0; p < K; p++)
             for (int q = 0; q < K; q++) {
               // cout[r][c][o] = cout[r][c][o] + cin[r + p][c + q][i] * w[o][p][q][i];
-              cout[o][r][c] = cout[o][r][c] + cin[i][r + p][c + q] * w[i][o][p][q];
+              cout[o][r][c] = cout[o][r][c] + cin[i][r + p][c + q] * w[i][o][p][4];
             }
       }
 #pragma endscop  
