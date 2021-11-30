@@ -24,35 +24,36 @@ int main(int argc, char **argv){
   data_t w[I][O][K][K];
   data_t cout[O][R][C];
   data_t cout_golden[O][R][C];
-  LoadData(cin, w, bias);
+  // LoadData(cin, w, bias);
   
-  // // data initialization
-  // for (int i = 0 ; i < I; i++)
-  //   for (int r = 0; r < R + K - 1; r++)
-  //     for (int c = 0; c < C + K - 1; c++) {
-  //       // cin[r][c][i] = i;
-  //       cin[i][r][c] = i;
-  //     }
+  // data initialization
+  for (int i = 0 ; i < I; i++)
+    for (int r = 0; r < R + K - 1; r++)
+      for (int c = 0; c < C + K - 1; c++) {
+        // cin[r][c][i] = i;
+        cin[i][r][c] = i;
+      }
 
-  // for (int o = 0; o < O; o++)
-  //   for (int i = 0; i < I; i++) 
-  //     for (int p = 0; p < K; p++)
-  //       for (int q = 0; q < K; q++) {
-  //         // w[o][p][q][i] = o;
-  //         w[i][o][p][q] = o;
-  //       }
+  for (int o = 0; o < O; o++)
+    for (int i = 0; i < I; i++) 
+      for (int p = 0; p < K; p++)
+        for (int q = 0; q < K; q++) {
+          // w[o][p][q][i] = o;
+          w[i][o][p][q] = o;
+        }
 
 #pragma scop
   for (int o = 0; o < O; o++)
     for (int r = 0; r < R; r++)
       for (int c = 0; c < C; c++) {
         //cout[r][c][o] = 0;
-        for (int i = 0; i < I; i++)
-          for (int p = 0; p < K; p++)
-            for (int q = 0; q < K; q++) {
-              // cout[r][c][o] = cout[r][c][o] + cin[r + p][c + q][i] * w[o][p][q][i];
-              cout[o][r][c] = cout[o][r][c] + cin[i][r + p][c + q] * w[i][o][p][q];
-            }
+        cout[o][r][c] = 0;
+        // for (int i = 0; i < I; i++)
+        //   for (int p = 0; p < K; p++)
+        //     for (int q = 0; q < K; q++) {
+        //       // cout[r][c][o] = cout[r][c][o] + cin[r + p][c + q][i] * w[o][p][q][i];
+        //       cout[o][r][c] = cout[o][r][c] + cin[i][r + p][c + q] * w[i][o][p][q];
+        //     }
       }
 #pragma endscop  
  
