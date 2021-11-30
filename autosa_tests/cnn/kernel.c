@@ -44,27 +44,29 @@ int main(int argc, char **argv){
       }
 #pragma endscop  
  
-  // for (int o = 0; o < O; o++)
-  //   for (int r = 0; r < R; r++)
-  //     for (int c = 0; c < C; c++) {
-  //       cout_golden[o][r][c] = 0;
-  //       for (int i = 0; i < I; i++)
-  //         for (int p = 0; p < K; p++)
-  //           for (int q = 0; q < K; q++) {
-  //             // cout_golden[r][c][o] = cout_golden[r][c][o] + cin[r + p][c + q][i] * w[o][p][q][i];
-  //             cout_golden[o][r][c] = cout_golden[o][r][c] + cin[i][r + p][c + q] * w[i][o][p][q];
-  //           }
-  //     }
+  for (int o = 0; o < O; o++)
+    for (int r = 0; r < R; r++)
+      for (int c = 0; c < C; c++) {
+        cout_golden[r][c][o] = 0;
+        // cout_golden[o][r][c] = 0;
+        for (int i = 0; i < I; i++)
+          for (int p = 0; p < K; p++)
+            for (int q = 0; q < K; q++) {
+              cout_golden[r][c][o] = cout_golden[r][c][o] + cin[r + p][c + q][i] * w[o][p][q][i];
+              // cout_golden[o][r][c] = cout_golden[o][r][c] + cin[i][r + p][c + q] * w[i][o][p][q];
+            }
+      }
 
-  // int err = 0;
-  // float thres = 0.001;
-  // for (int o = 0; o < O; o++)
-  //   for (int r = 0; r < R; r++)
-  //     for (int c = 0; c < C; c++) {
-  //       if (fabs((float)cout_golden[o][r][c] - (float)cout[o][r][c]) > thres) {
-  //         err++;
-  //       }
-  //     }
+  int err = 0;
+  float thres = 0.001;
+  for (int o = 0; o < O; o++)
+    for (int r = 0; r < R; r++)
+      for (int c = 0; c < C; c++) {
+        if (fabs((float)cout_golden[r][c][o] - (float)cout[r][c][o]) > thres) {
+        // if (fabs((float)cout_golden[o][r][c] - (float)cout[o][r][c]) > thres) {
+          err++;
+        }
+      }
 
   //if (err) {
   //  printf("Test failed with %d errors!\n", err);
