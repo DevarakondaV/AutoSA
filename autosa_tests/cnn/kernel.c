@@ -3,12 +3,12 @@
 
 int main(int argc, char **argv){
   // Allocate memory on heap to avoid stack overflow.
-  static data_t input[I][R][C];
-  static data_t weight[I][O][K][K];
-  static data_t bias[I];
-  static data_t output[O][R][C];
+  // static data_t input[I][R][C];
+  // static data_t weight[I][O][K][K];
+  // static data_t bias[I];
+  // static data_t output[O][R][C];
 
-  LoadData(input, weight, bias);
+  // LoadData(input, weight, bias);
 
   data_t cin[R + K - 1][C + K - 1][I];
   data_t w[O][K][K][I];
