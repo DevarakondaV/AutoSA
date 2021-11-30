@@ -3,18 +3,18 @@
 
 int main(int argc, char **argv){
   // Allocate memory on heap to avoid stack overflow.
-  static data_t cin[kNum][kInImSize][kInImSize];
-  static data_t w[kNum][kNum][kKernel][kKernel];
-  static data_t bias[kNum];
-  static data_t cout[kNum][kOutImSize][kOutImSize];
+  static data_t cin[I][R][C];
+  static data_t w[I][O][K][K];
+  static data_t bias[I];
+  static data_t cout[O][R][C];
 
-  if (argc > 2) {
-    clog << "Usage: " << argv[0] << " [data dir]\n";
-    return EXIT_FAILURE;
-  }
+  // if (argc > 2) {
+  //   clog << "Usage: " << argv[0] << " [data dir]\n";
+  //   return EXIT_FAILURE;
+  // }
 
-  const string data_dir = argc == 2 ? string(argv[1]) + "/" : "";
-  LoadData(data_dir, cin, w, bias);
+  // const string data_dir = argc == 2 ? string(argv[1]) + "/" : "";
+  LoadData(cin, w, bias);
 
   // data_t cin[R + K - 1][C + K - 1][I];
   // data_t w[O][K][K][I];

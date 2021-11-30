@@ -17,6 +17,7 @@ typedef float data_t;
 #define I 256 // kNum
 #define R 224 // kInImSize
 #define C 224 // kInImSize
+// #define RO 112 // kOutImSize
 #define K 5 //kKernel
 
 

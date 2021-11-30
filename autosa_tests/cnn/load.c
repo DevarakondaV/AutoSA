@@ -1,17 +1,14 @@
 #include "load.h"
-#include <string>
 
-using namespacce std;
-
-void LoadData(const string& data_dir, float input[kNum][kInImSize][kInImSize],
+void LoadData(float input[kNum][kInImSize][kInImSize],
               float weight[kNum][kNum][kKernel][kKernel], float bias[kNum]) {
   const char kInputFile[] = "input.bin";
   const char kWeightFile[] = "weight.bin";
   const char kBiasFile[] = "bias.bin";
 
-  int input_fd = open((data_dir + kInputFile).c_str(), O_RDONLY);
-  int weight_fd = open((data_dir + kWeightFile).c_str(), O_RDONLY);
-  int bias_fd = open((data_dir + kBiasFile).c_str(), O_RDONLY);
+  int input_fd = open((kInputFile).c_str(), O_RDONLY);
+  int weight_fd = open((kWeightFile).c_str(), O_RDONLY);
+  int bias_fd = open((kBiasFile).c_str(), O_RDONLY);
 
   if (input_fd == -1) {
     clog << "Cannot find " << kInputFile << endl;
