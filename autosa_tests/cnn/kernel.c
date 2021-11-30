@@ -10,7 +10,7 @@ int main(int argc, char **argv){
 
   // static data_t input[kNum][kInImSize][kInImSize];
   // static data_t weight[kNum][kNum][kKernel][kKernel];
-  // static data_t bias[kNum];
+  static data_t bias[kNum];
   // static data_t output[kNum][kOutImSize][kOutImSize];
 
   // LoadData(input, weight, bias);
@@ -24,48 +24,24 @@ int main(int argc, char **argv){
   data_t w[I][O][K][K];
   data_t cout[O][R][C];
   data_t cout_golden[O][R][C];
+  LoadData(cin, w, bias);
+  
+  // // data initialization
+  // for (int i = 0 ; i < I; i++)
+  //   for (int r = 0; r < R + K - 1; r++)
+  //     for (int c = 0; c < C + K - 1; c++) {
+  //       // cin[r][c][i] = i;
+  //       cin[i][r][c] = i;
+  //     }
 
-  // data initialization
-  for (int i = 0 ; i < I; i++)
-    for (int r = 0; r < R + K - 1; r++)
-      for (int c = 0; c < C + K - 1; c++) {
-        // cin[r][c][i] = i;
-        cin[i][r][c] = i;
-      }
+  // for (int o = 0; o < O; o++)
+  //   for (int i = 0; i < I; i++) 
+  //     for (int p = 0; p < K; p++)
+  //       for (int q = 0; q < K; q++) {
+  //         // w[o][p][q][i] = o;
+  //         w[i][o][p][q] = o;
+  //       }
 
-  for (int o = 0; o < O; o++)
-    for (int i = 0; i < I; i++) 
-      for (int p = 0; p < K; p++)
-        for (int q = 0; q < K; q++) {
-          // w[o][p][q][i] = o;
-          w[i][o][p][q] = o;
-        }
-
-    // for (int i = 0; i < kNum; ++i) {
-    //   for (int j = 0; j < kNum; ++j) {
-    //     for (int h = 0; h < kImSize; ++h) {
-    //       for (int w = 0; w < kImSize; ++w) {
-    //         for (int p = 0; p < kKernel; ++p) {
-    //           for (int q = 0; q < kKernel; ++q)
-    //             C[i][h][w] += weight(i, j, p, q) * input(j, h + p, w + q);
-    //           }
-    //         }
-    //     }
-    //   }
-    // }
-
-    // for (int i = 0; i < kNum; ++i) {
-    //   for (int j = 0; j < kNum; ++j) {
-    //     for (int h = 0; h < kImSize; ++h) {
-    //       for (int w = 0; w < kImSize; ++w) {
-    //         for (int p = 0; p < kKernel; ++p) {
-    //           for (int q = 0; q < kKernel; ++q)
-    //             C[i][h][w] += weight(i, j, p, q) * input(j, h + p, w + q);
-    //           }
-    //         }
-    //     }
-    //   }
-    // }
 #pragma scop
   for (int o = 0; o < O; o++)
     for (int r = 0; r < R; r++)
