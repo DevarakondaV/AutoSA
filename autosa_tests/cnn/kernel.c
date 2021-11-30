@@ -8,27 +8,27 @@ int main(int argc, char **argv){
   // static data_t bias[I];
   // static data_t output[O][R][C];
 
-  static data_t input[kNum][kInImSize][kInImSize];
-  static data_t weight[kNum][kNum][kKernel][kKernel];
-  static data_t bias[kNum];
-  static data_t output[kNum][kOutImSize][kOutImSize];
+  // static data_t input[kNum][kInImSize][kInImSize];
+  // static data_t weight[kNum][kNum][kKernel][kKernel];
+  // static data_t bias[kNum];
+  // static data_t output[kNum][kOutImSize][kOutImSize];
 
-  LoadData(input, weight, bias);
+  // LoadData(input, weight, bias);
 
   // data_t cin[R + K - 1][C + K - 1][I];
   // data_t w[O][K][K][I];
   // data_t cout[R][C][O];
   // data_t cout_golden[R][C][O];
 
-  data_t cin[I][R + K][C + K];
+  data_t cin[I][R + K - 1][C + K - 1];
   data_t w[I][O][K][K];
   data_t cout[O][R][C];
   data_t cout_golden[O][R][C];
 
   // data initialization
   for (int i = 0 ; i < I; i++)
-    for (int r = 0; r < R + K; r++)
-      for (int c = 0; c < C + K; c++) {
+    for (int r = 0; r < R + K - 1; r++)
+      for (int c = 0; c < C + K - 1; c++) {
         // cin[r][c][i] = i;
         cin[i][r][c] = i;
       }
